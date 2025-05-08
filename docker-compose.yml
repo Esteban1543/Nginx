@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  nginx:
+    build: .  # Indica que la imagen se debe construir desde la carpeta actual
+    ports:
+      - "80:80"  # Mapea el puerto 80 de la máquina host al puerto 80 del contenedor
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d  # Mapea la carpeta de configuración
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge
